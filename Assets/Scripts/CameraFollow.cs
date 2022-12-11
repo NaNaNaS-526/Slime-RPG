@@ -3,9 +3,11 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private Vector3 offset;
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(playerTransform.position.x + 1, 3, -10);
+        var nextPosition = Vector3.Lerp(transform.position, playerTransform.position + offset, Time.deltaTime);
+        transform.position = nextPosition;
     }
 }
