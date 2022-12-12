@@ -21,7 +21,7 @@ public abstract class Creature : MonoBehaviour
     private void FixedUpdate()
     {
         if (CurrentAction == Action.Move) Move();
-        else Attack();
+        if(CurrentAction == Action.Attack) Stop();
     }
 
     protected virtual void Move()
@@ -29,7 +29,7 @@ public abstract class Creature : MonoBehaviour
         Rigidbody.velocity = Vector3.left * (speed * Time.fixedDeltaTime);
     }
 
-    private void Attack()
+    private void Stop()
     {
         Rigidbody.velocity = Vector3.zero;
     }
